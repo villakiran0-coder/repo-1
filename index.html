@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f7fb">
+  <meta name="description" content="A simple, welcoming calendar for planning your days.">
+  <title>Daylight — Calendar</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Daylight home"><span class="brand-mark" aria-hidden="true">☼</span> daylight</a>
+      <div class="topbar-actions">
+        <button class="today-button" id="today-button" type="button">Today</button>
+        <button class="primary-button" id="add-event-button" type="button"><span aria-hidden="true">＋</span> Add event</button>
+      </div>
+    </header>
+
+    <section class="calendar-layout" aria-label="Calendar">
+      <div class="calendar-panel">
+        <div class="calendar-heading">
+          <div>
+            <p class="eyebrow">YOUR TIME, WELL SPENT</p>
+            <h1 id="month-title" aria-live="polite"></h1>
+          </div>
+          <div class="month-controls" aria-label="Change month">
+            <button class="icon-button" id="previous-month" type="button" aria-label="Previous month">‹</button>
+            <button class="icon-button" id="next-month" type="button" aria-label="Next month">›</button>
+          </div>
+        </div>
+        <div class="weekday-row" aria-hidden="true">
+          <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+        </div>
+        <div class="calendar-grid" id="calendar-grid" role="grid" aria-label="Month dates"></div>
+        <div class="calendar-legend"><span class="legend-dot"></span> Today <span class="legend-event"></span> Has events</div>
+      </div>
+
+      <aside class="agenda-panel" aria-labelledby="agenda-title">
+        <div class="agenda-heading">
+          <div>
+            <p class="eyebrow" id="agenda-eyebrow">YOUR AGENDA</p>
+            <h2 id="agenda-title">Coming up</h2>
+          </div>
+          <span class="agenda-date" id="agenda-date"></span>
+        </div>
+        <div class="agenda-list" id="agenda-list" aria-live="polite"></div>
+        <button class="add-agenda-button" id="agenda-add-button" type="button"><span aria-hidden="true">＋</span> Add an event</button>
+        <p class="storage-note">Your events are saved in this browser.</p>
+      </aside>
+    </section>
+    <footer>Make room for what matters.</footer>
+  </main>
+
+  <dialog class="event-dialog" id="event-dialog" aria-labelledby="dialog-title">
+    <form id="event-form">
+      <div class="dialog-heading">
+        <div><p class="eyebrow">MAKE A PLAN</p><h2 id="dialog-title">Add an event</h2></div>
+        <button class="icon-button close-button" id="close-dialog" type="button" aria-label="Close">×</button>
+      </div>
+      <label for="event-name">Event name</label>
+      <input id="event-name" name="name" type="text" maxlength="70" placeholder="What are you planning?" required>
+      <div class="form-row">
+        <div><label for="event-date">Date</label><input id="event-date" name="date" type="date" required></div>
+        <div><label for="event-time">Time <span class="optional">(optional)</span></label><input id="event-time" name="time" type="time"></div>
+      </div>
+      <label for="event-color">Color</label>
+      <select id="event-color" name="color">
+        <option value="violet">Lavender</option><option value="blue">Sky blue</option><option value="green">Mint</option><option value="orange">Peach</option>
+      </select>
+      <div class="dialog-actions"><button class="cancel-button" id="cancel-dialog" type="button">Cancel</button><button class="primary-button" type="submit">Save event</button></div>
+    </form>
+  </dialog>
+</body>
+</html>
